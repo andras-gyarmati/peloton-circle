@@ -1,19 +1,20 @@
 ArrayList<PVector> ps, circle;
 boolean save;
 float circleRadius, spread, offset;
-int maxCount;
+int maxCount, circleResoluton;
 
 void setup() {
   fullScreen();
-  stroke(0, 0, 0, 25);
-  strokeWeight(3);
-  frameRate(25);
-  
-  circleRadius = 190;
+  stroke(0, 0, 0, 55);
+  strokeWeight(0.5);
+  frameRate(30);
+
+  circleRadius = 150;
   offset = 30;
   spread = 0.6;
-  maxCount = 700;
-  
+  maxCount = 2300;
+  circleResoluton = 72;
+
   ps = new ArrayList<PVector>();
   circle = new ArrayList<PVector>();
   init();
@@ -43,9 +44,9 @@ void disp() {
 
 void init() {
   PVector base = new PVector(-circleRadius, 0);
-  for (int i = 0; i < 36; i++) {
+  for (int i = 0; i < circleResoluton; i++) {
     if (random(1) > 0.2) {
-      circle.add(base.copy().rotate(TWO_PI / 36 * i));
+      circle.add(base.copy().rotate(TWO_PI / circleResoluton * i));
     }
   }
   ps.add(base);
